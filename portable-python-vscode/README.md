@@ -1,116 +1,116 @@
-# Portable Python + VS Code ƒZƒbƒgƒAƒbƒvƒLƒbƒg
+# Portable Python + VS Code ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚­ãƒƒãƒˆ
 
-## ŠT—v
+## æ¦‚è¦
 
-‚±‚ÌƒLƒbƒg‚ÍAPythonƒvƒƒOƒ‰ƒ~ƒ“ƒOŠwK‚Ì‚½‚ß‚Ìƒ|[ƒ^ƒuƒ‹ŠÂ‹«‚Å‚·B
-ŠÇ—ŽÒŒ ŒÀ‚È‚µ‚ÅƒCƒ“ƒXƒg[ƒ‹‚Å‚«AUSBƒƒ‚ƒŠ‚Å‚à“®ì‚µ‚Ü‚·B
+ã“ã®ã‚­ãƒƒãƒˆã¯ã€Pythonãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°å­¦ç¿’ã®ãŸã‚ã®ãƒãƒ¼ã‚¿ãƒ–ãƒ«ç’°å¢ƒã§ã™ã€‚
+ç®¡ç†è€…æ¨©é™ãªã—ã§ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã§ãã€USBãƒ¡ãƒ¢ãƒªã§ã‚‚å‹•ä½œã—ã¾ã™ã€‚
 
-## ŠÜ‚Ü‚ê‚é“à—e
+## å«ã¾ã‚Œã‚‹å†…å®¹
 
-- **Python 3.13.0** (Embeddable”Å)
-- **Visual Studio Code** (Portable”Å)
-- **Šg’£‹@”\**:
-  - PythonŠJ”­ƒc[ƒ‹
+- **Python 3.13.0** (Embeddableç‰ˆ)
+- **Visual Studio Code** (Portableç‰ˆ)
+- **æ‹¡å¼µæ©Ÿèƒ½**:
+  - Pythoné–‹ç™ºãƒ„ãƒ¼ãƒ«
   - GitHub Copilot
   - Jupyter Notebook
-  - ‚»‚Ì‘¼17ŒÂ‚ÌŠg’£‹@”\
-- **Pythonƒ‰ƒCƒuƒ‰ƒŠ**:
-  - numpy, pandas, matplotlibiƒf[ƒ^•ªÍj
-  - flask, fastapiiWebŠJ”­j
-  - jupyter, jupyterlabiƒm[ƒgƒuƒbƒNj
-  - ‚»‚Ì‘¼‘½”
+  - ãã®ä»–17å€‹ã®æ‹¡å¼µæ©Ÿèƒ½
+- **Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒª**:
+  - numpy, pandas, matplotlibï¼ˆãƒ‡ãƒ¼ã‚¿åˆ†æžï¼‰
+  - flask, fastapiï¼ˆWebé–‹ç™ºï¼‰
+  - jupyter, jupyterlabï¼ˆãƒŽãƒ¼ãƒˆãƒ–ãƒƒã‚¯ï¼‰
+  - ãã®ä»–å¤šæ•°
 
-## ƒZƒbƒgƒAƒbƒvŽè‡
+## ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—æ‰‹é †
 
-### 1. ƒ_ƒEƒ“ƒ[ƒh
+### 1. ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 
-ƒTƒ|[ƒgƒTƒCƒgihttps://k-webs.jpj‚©‚ç
-`portable-python-vscode-kit.zip` ‚ðƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·B
+ã“ã®ãƒªãƒã‚¸ãƒˆãƒªï¼ˆhttps://github.com/kawaba/Autosetup-Vscode-pythonï¼‰ã‹ã‚‰gitã§å–å¾—ã™ã‚‹ã‹ã€
+zipãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦ãã ã•ã„ã€‚
 
-### 2. ‰ð“€
+### 2. cloneã¾ãŸã¯è§£å‡å ´æ‰€
 
-”CˆÓ‚ÌƒtƒHƒ‹ƒ_‚É‰ð“€‚µ‚Ä‚­‚¾‚³‚¢B
+ä»»æ„ã®ãƒ•ã‚©ãƒ«ãƒ€ã§æ§‹ã„ã¾ã›ã‚“ãŒã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ‰ãƒ©ã‚¤ãƒ–ä»¥å¤–ã‚’æŽ¨å¥¨ã—ã¾ã™ã€‚
 
-**„§êŠ**:
-- `C:\Users\[ƒ†[ƒU[–¼]\portable-dev`
-- USBƒƒ‚ƒŠ‚Ìê‡: `F:\portable-dev` ‚È‚Ç
+**æŽ¨å¥¨å ´æ‰€**:
+- `C:\Users\[ãƒ¦ãƒ¼ã‚¶ãƒ¼å]\portable-dev`
+- USBãƒ¡ãƒ¢ãƒªã®å ´åˆ: `F:\portable-dev` ãªã©
 
-**’ˆÓ**: “ú–{Œê‚ðŠÜ‚ÞƒpƒX‚Í”ð‚¯‚Ä‚­‚¾‚³‚¢B
+**æ³¨æ„**: æ—¥æœ¬èªžã‚’å«ã‚€ãƒ‘ã‚¹ã¯é¿ã‘ã¦ãã ã•ã„ã€‚
 
-### 3. ƒZƒbƒgƒAƒbƒvŽÀs
+### 3. ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å®Ÿè¡Œ
 
-`setup.bat` ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄŽÀs‚µ‚Ü‚·B
+`setup.bat` ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦å®Ÿè¡Œã—ã¾ã™ã€‚
 
-**Š—vŽžŠÔ**: –ñ10-15•ª
-- ƒ_ƒEƒ“ƒ[ƒh: 5-10•ªi‰ñü‘¬“x‚É‚æ‚éj
-- ƒCƒ“ƒXƒg[ƒ‹: 3-5•ª
+**æ‰€è¦æ™‚é–“**: ç´„10-15åˆ†
+- ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰: 5-10åˆ†ï¼ˆå›žç·šé€Ÿåº¦ã«ã‚ˆã‚‹ï¼‰
+- ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«: 3-5åˆ†
 
-**ŽÀs‚³‚ê‚éˆ—**:
-1. Python 3.13.0‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJ
-2. pipƒRƒ}ƒ“ƒh‚ÌƒCƒ“ƒXƒg[ƒ‹
-3. Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒXƒg[ƒ‹i40ˆÈãj
-4. VS Code‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJ
-5. VS CodeŠg’£‹@”\‚ÌƒCƒ“ƒXƒg[ƒ‹i17ŒÂj
-6. Ý’èƒtƒ@ƒCƒ‹‚ÌƒRƒs[
+**å®Ÿè¡Œã•ã‚Œã‚‹å‡¦ç†**:
+1. Python 3.13.0ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹
+2. pipã‚³ãƒžãƒ³ãƒ‰ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+3. Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ï¼ˆ40ä»¥ä¸Šï¼‰
+4. VS Codeã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹
+5. VS Codeæ‹¡å¼µæ©Ÿèƒ½ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ï¼ˆ17å€‹ï¼‰
+6. è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼
 
-### 4. ‹N“®
-yd—vz
-`launch-vscode.bat` ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚ÄVS Code‚ð‹N“®‚µ‚Ü‚·B
+### 4. èµ·å‹•
+ã€é‡è¦ã€‘
+`launch-vscode.bat` ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦VS Codeã‚’èµ·å‹•ã—ã¾ã™ã€‚
 
-## ƒfƒBƒŒƒNƒgƒŠ\¬
+## ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªæ§‹æˆ
 
 ```
 portable-python-vscode-kit/
-„¥„Ÿ„Ÿ setup.ps1               # ƒZƒbƒgƒAƒbƒvƒXƒNƒŠƒvƒgiPowerShellj
-„¥„Ÿ„Ÿ setup.bat               # ƒZƒbƒgƒAƒbƒvŽÀs—pišÅ‰‚É‚±‚ê‚ðŽÀsj
-„¥„Ÿ„Ÿ launch-vscode.bat       # VS Code‹N“®—pišƒZƒbƒgƒAƒbƒvŒã‚ÉŽg—pj
-„¥„Ÿ„Ÿ README.md               # ‚±‚Ìƒtƒ@ƒCƒ‹
-„¥„Ÿ„Ÿ config/
-„    „¥„Ÿ„Ÿ settings.json       # VS CodeÝ’è
-„    „¤„Ÿ„Ÿ cleanExtentions.txt # Šg’£‹@”\ƒŠƒXƒg
-„ 
-„¥„Ÿ„Ÿ python/                 # šƒZƒbƒgƒAƒbƒv‚Åì¬‚³‚ê‚é
-„    „¥„Ÿ„Ÿ python.exe
-„    „¥„Ÿ„Ÿ Scripts/
-„    „¤„Ÿ„Ÿ Lib/
-„ 
-„¤„Ÿ„Ÿ vscode/                 # šƒZƒbƒgƒAƒbƒv‚Åì¬‚³‚ê‚é
-    „¥„Ÿ„Ÿ Code.exe
-    „¥„Ÿ„Ÿ bin/
-    „¤„Ÿ„Ÿ data/
-        „¥„Ÿ„Ÿ extensions/     # Šg’£‹@”\
-        „¤„Ÿ„Ÿ user-data/      # ƒ†[ƒU[Ý’è
+â”œâ”€â”€ setup.ps1               # ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚¹ã‚¯ãƒªãƒ—ãƒˆï¼ˆPowerShellï¼‰
+â”œâ”€â”€ setup.bat               # ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å®Ÿè¡Œç”¨ï¼ˆâ˜…æœ€åˆã«ã“ã‚Œã‚’å®Ÿè¡Œï¼‰
+â”œâ”€â”€ launch-vscode.bat       # VS Codeèµ·å‹•ç”¨ï¼ˆâ˜…ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å¾Œã«ä½¿ç”¨ï¼‰
+â”œâ”€â”€ README.md               # ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«
+â”œâ”€â”€ config/
+â”‚   â”œâ”€â”€ settings.json       # VS Codeè¨­å®š
+â”‚   â””â”€â”€ cleanExtentions.txt # æ‹¡å¼µæ©Ÿèƒ½ãƒªã‚¹ãƒˆ
+â”‚
+â”œâ”€â”€ python/                 # â˜…ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã§ä½œæˆã•ã‚Œã‚‹
+â”‚   â”œâ”€â”€ python.exe
+â”‚   â”œâ”€â”€ Scripts/
+â”‚   â””â”€â”€ Lib/
+â”‚
+â””â”€â”€ vscode/                 # â˜…ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã§ä½œæˆã•ã‚Œã‚‹
+    â”œâ”€â”€ Code.exe
+    â”œâ”€â”€ bin/
+    â””â”€â”€ data/
+        â”œâ”€â”€ extensions/     # æ‹¡å¼µæ©Ÿèƒ½
+        â””â”€â”€ user-data/      # ãƒ¦ãƒ¼ã‚¶ãƒ¼è¨­å®š
 ```
 
-## Žg‚¢•û
+## ä½¿ã„æ–¹
 
-### Šî–{‘€ì
+### åŸºæœ¬æ“ä½œ
 
-1. `launch-vscode.bat` ‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µ‚Ä‹N“®ƒd—v„
-2. workspaceƒtƒHƒ‹ƒ_‚ªŠJ‚¢‚Ä‚¢‚éó‘Ô‚Å‹N“®‚·‚é
-   ‚±‚ÌƒtƒHƒ‹ƒ_“à‚ÉAƒTƒuƒtƒHƒ‹ƒ_‚ðì‚Á‚Ä•K—v‚Èƒtƒ@ƒCƒ‹‚ðì¬‚·‚é
+1. `launch-vscode.bat` ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—ã¦èµ·å‹•ï¼œé‡è¦ï¼ž
+2. workspaceãƒ•ã‚©ãƒ«ãƒ€ãŒé–‹ã„ã¦ã„ã‚‹çŠ¶æ…‹ã§èµ·å‹•ã™ã‚‹
+   ã“ã®ãƒ•ã‚©ãƒ«ãƒ€å†…ã«ã€ã‚µãƒ–ãƒ•ã‚©ãƒ«ãƒ€ã‚’ä½œã£ã¦å¿…è¦ãªãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹
 
-### V‚µ‚¢ƒ‰ƒCƒuƒ‰ƒŠ‚Ì’Ç‰Á
+### æ–°ã—ã„ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®è¿½åŠ 
 
-ƒ^[ƒ~ƒiƒ‹‚Å:
+ã‚¿ãƒ¼ãƒŸãƒŠãƒ«ã§:
 ```bash
-python -m pip install [ƒpƒbƒP[ƒW–¼]
+python -m pip install [ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸å]
 ```
 
-—á:
+ä¾‹:
 ```bash
 python -m pip install opencv-python
 ```
 
-## ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚éŠg’£‹@”\
+## ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã‚‹æ‹¡å¼µæ©Ÿèƒ½
 
-- **PythonŠJ”­**:
+- **Pythoné–‹ç™º**:
   - Python
   - Pylance
   - Python Debugger
   - Python Environments Manager
   
-- **AIŽx‰‡**:
+- **AIæ”¯æ´**:
   - GitHub Copilot
   - GitHub Copilot Chat
   
@@ -120,74 +120,74 @@ python -m pip install opencv-python
   - Jupyter Cell Tags
   - Jupyter Slide Show
   
-- **‚»‚Ì‘¼**:
-  - PrettieriƒR[ƒh®Œ`j
-  - “ú–{ŒêŒ¾ŒêƒpƒbƒN
+- **ãã®ä»–**:
+  - Prettierï¼ˆã‚³ãƒ¼ãƒ‰æ•´å½¢ï¼‰
+  - æ—¥æœ¬èªžè¨€èªžãƒ‘ãƒƒã‚¯
 
-## ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚éPythonƒ‰ƒCƒuƒ‰ƒŠ
+## ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã‚‹Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 
-### ƒR[ƒh•iŽ¿
+### ã‚³ãƒ¼ãƒ‰å“è³ª
 - black, pylint, flake8, autopep8, isort, mypy
 
-### ƒ†[ƒeƒBƒŠƒeƒB
+### ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£
 - requests, python-dotenv, tqdm, colorama
 
-### ƒf[ƒ^•ªÍ
+### ãƒ‡ãƒ¼ã‚¿åˆ†æž
 - numpy, pandas, matplotlib, scipy, seaborn
 
-### WebŠJ”­
+### Webé–‹ç™º
 - flask, fastapi, uvicorn, beautifulsoup4, lxml
 
-### ƒtƒ@ƒCƒ‹ˆ—
+### ãƒ•ã‚¡ã‚¤ãƒ«å‡¦ç†
 - openpyxl, pillow, pyyaml
 
-### ƒeƒXƒgEŠJ”­
+### ãƒ†ã‚¹ãƒˆãƒ»é–‹ç™º
 - pytest, faker, debugpy
 
 ### Jupyter
 - notebook, jupyterlab, ipykernel, ipywidgets
 - jupyterlab-lsp, python-lsp-server
 
-### ‰ÂŽ‹‰»
+### å¯è¦–åŒ–
 - plotly, xlsxwriter
 
-## ŠÂ‹«‚ÌŽ‚¿‰^‚Ñ
+## ç’°å¢ƒã®æŒã¡é‹ã³
 
-### USBƒƒ‚ƒŠ‚Ö‚ÌƒRƒs[
+### USBãƒ¡ãƒ¢ãƒªã¸ã®ã‚³ãƒ”ãƒ¼
 
-1. ƒZƒbƒgƒAƒbƒvŠ®—¹ŒãAƒtƒHƒ‹ƒ_‚²‚ÆƒRƒs[
-2. USBƒƒ‚ƒŠ‚Å `launch-vscode.bat` ‚ðŽÀs
+1. ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å®Œäº†å¾Œã€ãƒ•ã‚©ãƒ«ãƒ€ã”ã¨ã‚³ãƒ”ãƒ¼
+2. USBãƒ¡ãƒ¢ãƒªã§ `launch-vscode.bat` ã‚’å®Ÿè¡Œ
 
-### •Ê‚ÌPC‚Å‚ÌŽg—p
+### åˆ¥ã®PCã§ã®ä½¿ç”¨
 
-1. ƒtƒHƒ‹ƒ_‚²‚ÆƒRƒs[
-2. `launch-vscode.bat` ‚Å‹N“®
-3. ÄƒZƒbƒgƒAƒbƒv•s—v
+1. ãƒ•ã‚©ãƒ«ãƒ€ã”ã¨ã‚³ãƒ”ãƒ¼
+2. `launch-vscode.bat` ã§èµ·å‹•
+3. å†ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ä¸è¦
 
-## ƒAƒ“ƒCƒ“ƒXƒg[ƒ‹
+## ã‚¢ãƒ³ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 
-ƒtƒHƒ‹ƒ_‚²‚Æíœ‚·‚é‚¾‚¯‚Å‚·B
-ƒŒƒWƒXƒgƒŠ‚â‘¼‚Ìƒtƒ@ƒCƒ‹‚ÍˆêØ•ÏX‚³‚ê‚Ü‚¹‚ñB
+ãƒ•ã‚©ãƒ«ãƒ€ã”ã¨å‰Šé™¤ã™ã‚‹ã ã‘ã§ã™ã€‚
+ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚„ä»–ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯ä¸€åˆ‡å¤‰æ›´ã•ã‚Œã¾ã›ã‚“ã€‚
 
-## ƒ‰ƒCƒZƒ“ƒX
+## ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 
 - **Python**: PSF License
 - **Visual Studio Code**: Microsoft Software License
-- **Šg’£‹@”\**: ŠeŠg’£‹@”\‚Ìƒ‰ƒCƒZƒ“ƒX‚É€‹’
+- **æ‹¡å¼µæ©Ÿèƒ½**: å„æ‹¡å¼µæ©Ÿèƒ½ã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã«æº–æ‹ 
 
-–{ƒLƒbƒg‚Í‚±‚ê‚ç‚Ìƒ\ƒtƒgƒEƒFƒA‚ðŒöŽ®ƒTƒCƒg‚©‚çŽ©“®ƒ_ƒEƒ“ƒ[ƒh‚µ‚Ä
-ƒZƒbƒgƒAƒbƒv‚·‚éƒc[ƒ‹‚Å‚·B
+æœ¬ã‚­ãƒƒãƒˆã¯ã“ã‚Œã‚‰ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å…¬å¼ã‚µã‚¤ãƒˆã‹ã‚‰è‡ªå‹•ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¦
+ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ãƒ„ãƒ¼ãƒ«ã§ã™ã€‚
 
-## XV—š—ð
+## æ›´æ–°å±¥æ­´
 
-- 2025-12: ‰”ÅƒŠƒŠ[ƒX
+- 2025-12: åˆç‰ˆãƒªãƒªãƒ¼ã‚¹
   - Python 3.13.0
-  - VS CodeÅV”Å
-  - Šg’£‹@”\17ŒÂ
-  - Pythonƒ‰ƒCƒuƒ‰ƒŠ40ˆÈã
+  - VS Codeæœ€æ–°ç‰ˆ
+  - æ‹¡å¼µæ©Ÿèƒ½17å€‹
+  - Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒª40ä»¥ä¸Š
 
 ---
 
-**§ì**: Takashi Kawaba  
-**ƒo[ƒWƒ‡ƒ“**: 1.0.0  
-**ÅIXV**: 2025”N12ŒŽ
+**åˆ¶ä½œ**: Takashi Kawaba  
+**ãƒãƒ¼ã‚¸ãƒ§ãƒ³**: 1.0.0  
+**æœ€çµ‚æ›´æ–°**: 2025å¹´12æœˆ
