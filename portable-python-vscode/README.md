@@ -41,9 +41,9 @@
 
 `setup.bat` をダブルクリックして実行します。
 
-**所要時間**: 約10?15分
-- ダウンロード: 5?10分（回線速度による）
-- インストール: 3?5分
+**所要時間**: 約10-15分
+- ダウンロード: 5-10分（回線速度による）
+- インストール: 3-5分
 
 **実行される処理**:
 1. Python 3.13.0のダウンロード・展開
@@ -54,7 +54,7 @@
 6. 設定ファイルのコピー
 
 ### 4. 起動
-
+【重要】
 `launch-vscode.bat` をダブルクリックしてVS Codeを起動します。
 
 ## ディレクトリ構成
@@ -86,23 +86,9 @@ portable-python-vscode-kit/
 
 ### 基本操作
 
-1. `launch-vscode.bat` をダブルクリックして起動
-2. 「フォルダーを開く」から作業フォルダを選択
-3. `.py` ファイルを作成してコーディング
-4. F5キーまたは右クリック→「ターミナルで実行」で実行
-
-### Jupyter Notebookの起動
-
-VS Codeのターミナルで:
-```bash
-jupyter notebook
-```
-
-または
-
-```bash
-jupyter lab
-```
+1. `launch-vscode.bat` をダブルクリックして起動＜重要＞
+2. workspaceフォルダが開いている状態で起動する
+   このフォルダ内に、サブフォルダを作って必要なファイルを作成する
 
 ### 新しいライブラリの追加
 
@@ -115,45 +101,6 @@ python -m pip install [パッケージ名]
 ```bash
 python -m pip install opencv-python
 ```
-
-## トラブルシューティング
-
-### setup.batが実行できない
-
-**原因**: PowerShellの実行ポリシー制限
-
-**解決方法**:
-1. PowerShellを管理者権限で開く
-2. 以下を実行:
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-   ```
-3. setup.batを再実行
-
-### ダウンロードが失敗する
-
-**原因**: ネットワーク制限またはタイムアウト
-
-**解決方法1（学校の場合）**:
-- 自宅でセットアップした完成版をUSBで持参
-
-**解決方法2（再試行）**:
-- インターネット接続を確認
-- setup.batを再実行（既存ファイルはスキップされます）
-
-### VS Codeが起動しない
-
-**確認事項**:
-1. `vscode\Code.exe` が存在するか確認
-2. setup.batが完了しているか確認
-3. launch-vscode.batを右クリック→「管理者として実行」
-
-### Python拡張機能がPythonを認識しない
-
-**解決方法**:
-1. VS Codeで `Ctrl + Shift + P`
-2. 「Python: Select Interpreter」を選択
-3. `.\python\python.exe` を選択
 
 ## インストールされる拡張機能
 
@@ -211,10 +158,6 @@ python -m pip install opencv-python
 1. セットアップ完了後、フォルダごとコピー
 2. USBメモリで `launch-vscode.bat` を実行
 
-**注意**: 
-- USBはUSB 3.0以上を推奨
-- 容量: 最低2GB以上
-
 ### 別のPCでの使用
 
 1. フォルダごとコピー
@@ -225,11 +168,6 @@ python -m pip install opencv-python
 
 フォルダごと削除するだけです。
 レジストリや他のファイルは一切変更されません。
-
-## サポート
-
-- サポートサイト: https://k-webs.jp
-- 書籍のサンプルコード、追加情報を掲載
 
 ## ライセンス
 
@@ -242,7 +180,7 @@ python -m pip install opencv-python
 
 ## 更新履歴
 
-- 2025-01-XX: 初版リリース
+- 2025-12: 初版リリース
   - Python 3.13.0
   - VS Code最新版
   - 拡張機能17個
@@ -250,6 +188,6 @@ python -m pip install opencv-python
 
 ---
 
-**制作**: [著者名]  
+**制作**: Takashi Kawaba  
 **バージョン**: 1.0.0  
-**最終更新**: 2025年1月
+**最終更新**: 2025年12月
