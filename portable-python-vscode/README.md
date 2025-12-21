@@ -24,8 +24,7 @@
 
 ### 1. ダウンロード
 
-このリポジトリ（https://github.com/kawaba/Autosetup-Vscode-python）からgitで取得するか、
-zipファイルをダウンロードしてください。
+このリポジトリからgitで取得するか、zipファイルをダウンロードしてください。
 
 ### 2. cloneまたは解凍場所
 
