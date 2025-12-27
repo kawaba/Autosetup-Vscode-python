@@ -16,8 +16,8 @@ Write-Host ""
 
 Write-Host "[1/5] ポータブルPythonをダウンロード中..." -ForegroundColor Green
 
-# Python 3.12.0 Embeddable版（64bit）
-$pythonUrl = "https://www.python.org/ftp/python/3.12.9/python-3.12.9-embed-amd64.zip"
+# Python 3.12.9 Embeddable版（64bit）
+$pythonUrl = "https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip"
 $pythonZip = "python.zip"
 $pythonDir = ".\python"
 
@@ -51,6 +51,62 @@ if (Test-Path $pthFile) {
 Write-Host ""
 
 # ============================================================
+# 1.5 Tcl/Tk セットアップ（tkinter有効化・確実版）
+# ============================================================
+
+Write-Host "[1.5/5] Tcl/Tk をセットアップ中..." -ForegroundColor Green
+
+$tkLog = Join-Path $PSScriptRoot "tk_error.log"
+
+function Write-TkLog {
+    param([string]$msg)
+    $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$time $msg" | Out-File -FilePath $tkLog -Append -Encoding UTF8
+}
+
+try {
+    $fullZip = ".\python-full.zip"
+    $fullDir = ".\python-full"
+
+    if (!(Test-Path $fullDir)) {
+        Write-Host "  フル版Python(ZIP)をダウンロード中..." -ForegroundColor Gray
+        $url = "https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip"
+        Invoke-WebRequest -Uri $url -OutFile $fullZip
+
+        Write-Host "  展開中..." -ForegroundColor Gray
+        Expand-Archive -Path $fullZip -DestinationPath $fullDir -Force
+    }
+
+    $srcTcl  = Join-Path $fullDir "tcl"
+    $srcDlls = Join-Path $fullDir "DLLs"
+    $dstDlls = Join-Path $pythonDir "DLLs"
+
+    if (!(Test-Path $srcTcl)) {
+        throw "tcl ディレクトリが見つかりません: $srcTcl"
+    }
+
+    Copy-Item $srcTcl $pythonDir -Recurse -Force
+    Write-TkLog "tcl コピー成功"
+
+    Copy-Item "$srcDlls\_tkinter.pyd" $dstDlls -Force
+    Write-TkLog "_tkinter.pyd コピー成功"
+
+    Copy-Item "$srcDlls\tcl86t.dll" $pythonDir -Force
+    Copy-Item "$srcDlls\tk86t.dll"  $pythonDir -Force
+    Write-TkLog "tcl/tk DLL コピー成功"
+
+    Write-Host "  Tcl/Tk セットアップ完了" -ForegroundColor Green
+}
+catch {
+    Write-Host "  Tcl/Tk セットアップ失敗" -ForegroundColor Red
+    Write-Host "  詳細は tk_error.log を確認してください" -ForegroundColor Yellow
+    Write-TkLog "エラー: $($_.Exception.Message)"
+}
+
+Write-Host ""
+
+
+# ============================================================
 # 2. pipコマンドのインストール
 # ============================================================
 
@@ -76,6 +132,30 @@ Write-Host ""
 # ============================================================
 
 Write-Host "[3/5] Pythonライブラリをインストール中..." -ForegroundColor Green
+$env:PATH = "$PWD\python;$PWD\python\Scripts;$env:PATH"
+
+& ".\python\python.exe" -m pip install --upgrade pip
+& ".\python\python.exe" -m pip install wheel
+& ".\python\python.exe" -m pip install black pylint flake8 autopep8 isort mypy
+& ".\python\python.exe" -m pip install requests python-dotenv tqdm colorama
+& ".\python\python.exe" -m pip install --only-binary :all: numpy pandas matplotlib scipy seaborn
+& ".\python\python.exe" -m pip install flask fastapi uvicorn beautifulsoup4 lxml
+& ".\python\python.exe" -m pip install openpyxl pillow pyyaml pytest faker
+& ".\python\python.exe" -m pip install notebook jupyterlab ipykernel ipywidgets
+& ".\python\python.exe" -m pip install jupyterlab-lsp python-lsp-server
+& ".\python\python.exe" -m pip install plotly xlsxwriter
+& ".\python\python.exe" -m pip install streamlit debugpy pygame arcade pyglet
+& ".\python\python.exe" -m pip install scikit-learn statsmodels sqlalchemy psycopg2-binary
+& ".\python\python.exe" -m pip install pydantic httpx janome rich
+& ".\python\python.exe" -m pip install https://k-webs.jp/lib/python/kbinput-1.0.0-py3-none-any.whl
+
+Write-Host ""
+
+# ============================================================
+# 4. Pythonライブラリのインストール
+# ============================================================
+
+Write-Host "[3/5] Pythonライブラリをインストール中..." -ForegroundColor Green
 Write-Host "  （この処理には5~10分かかる場合があります）" -ForegroundColor Yellow
 Write-Host ""
 
@@ -91,54 +171,78 @@ Write-Host "  wheel をインストール中..."
 & ".\python\python.exe" -m pip install wheel
 
 # コード整形・静的解析ツール
-Write-Host "  [1/10] コード整形・解析ツールをインストール中..."
+Write-Host "  [1/17] コード整形・解析ツールをインストール中..."
 & ".\python\python.exe" -m pip install black pylint flake8 autopep8 isort mypy
 
 # ユーティリティ系
-Write-Host "  [2/10] ユーティリティをインストール中..."
+Write-Host "  [2/17] ユーティリティをインストール中..."
 & ".\python\python.exe" -m pip install requests python-dotenv tqdm colorama
 
 # 数値・統計・可視化
-Write-Host "  [3/10] 数値計算・可視化ライブラリをインストール中..."
+Write-Host "  [3/17] 数値計算・可視化ライブラリをインストール中..."
 & ".\python\python.exe" -m pip install --only-binary :all: numpy pandas matplotlib scipy seaborn
 
 # Web開発
-Write-Host "  [4/10] Web開発ライブラリをインストール中..."
+Write-Host "  [4/17] Web開発ライブラリをインストール中..."
 & ".\python\python.exe" -m pip install flask fastapi uvicorn beautifulsoup4 lxml
 
 # Excel・画像・テスト
-Write-Host "  [5/10] Excel・画像処理・テストライブラリをインストール中..."
+Write-Host "  [5/17] Excel・画像処理・テストライブラリをインストール中..."
 & ".\python\python.exe" -m pip install openpyxl pillow pyyaml pytest faker
 
 # Jupyter Notebook
-Write-Host "  [6/10] Jupyter Notebookをインストール中..."
+Write-Host "  [6/17] Jupyter Notebookをインストール中..."
 & ".\python\python.exe" -m pip install notebook jupyterlab ipykernel ipywidgets
 
 # Jupyter LSP
-Write-Host "  [7/10] Jupyter LSPをインストール中..."
+Write-Host "  [7/17] Jupyter LSPをインストール中..."
 & ".\python\python.exe" -m pip install jupyterlab-lsp python-lsp-server
 
 # グラフ・Excel出力拡張
-Write-Host "  [8/10] グラフ・Excel出力ライブラリをインストール中..."
+Write-Host "  [8/17] グラフ・Excel出力ライブラリをインストール中..."
 & ".\python\python.exe" -m pip install plotly xlsxwriter
 
 # streamlit 関係
-Write-Host "  [9/10] グラフ・streamlit関連ライブラリをインストール中..."
+Write-Host "  [9/17] グラフ・streamlit関連ライブラリをインストール中..."
 & ".\python\python.exe" -m pip install streamlit requests
 
 # その他（settings.jsonで参照されているもの）
-Write-Host "  [10/10] その他必要なライブラリをインストール中..."
+Write-Host "  [10/17] その他必要なライブラリをインストール中..."
 & ".\python\python.exe" -m pip install debugpy
 
+# ゲーム開発
+Write-Host "  [11/17] ゲーム開発ライブラリをインストール中..."
+& ".\python\python.exe" -m pip install pygame arcade pyglet
+
+# 機械学習・データサイエンス
+Write-Host "  [12/17] 機械学習ライブラリをインストール中..."
+& ".\python\python.exe" -m pip install scikit-learn statsmodels
+
+# データベース・ORM
+Write-Host "  [13/17] データベースライブラリをインストール中..."
+& ".\python\python.exe" -m pip install sqlalchemy psycopg2-binary
+
+# API開発強化
+Write-Host "  [14/17] API開発強化ライブラリをインストール中..."
+& ".\python\python.exe" -m pip install pydantic httpx
+
+# 日本語処理
+Write-Host "  [15/17] 日本語処理ライブラリをインストール中..."
+& ".\python\python.exe" -m pip install janome
+
+# ターミナル出力
+Write-Host "  [16/17] ターミナル出力ライブラリをインストール中..."
+& ".\python\python.exe" -m pip install rich
+
 # tkinputのインストール
-Write-Host "  kbinput をインストール中..."
+Write-Host "  [17/17] kbinput をインストール中..."
 & ".\python\python.exe" -m pip install https://k-webs.jp/lib/python/kbinput-1.0.0-py3-none-any.whl
 
 Write-Host "  Pythonライブラリのインストール完了" -ForegroundColor Green
 Write-Host ""
 
 # ============================================================
-# 4. VS Codeのダウンロード・展開
+# 5. VS Codeのダウンロード・展開
 # ============================================================
 
 Write-Host "[4/5] VS Code Portableをダウンロード中..." -ForegroundColor Green
@@ -167,7 +271,7 @@ if (Test-Path $vscodeDir) {
 Write-Host ""
 
 # ============================================================
-# 5. VS Code拡張機能のインストール
+# 6. VS Code拡張機能のインストール
 # ============================================================
 
 Write-Host "[5/5] VS Code拡張機能をインストール中..." -ForegroundColor Green
@@ -194,7 +298,7 @@ if (Test-Path $extFile) {
 Write-Host ""
 
 # ============================================================
-# 5.5 VS Code 日本語化設定を追加
+# 6.5 VS Code 日本語化設定を追加
 # ============================================================
 
 Write-Host "VS Code の表示言語を日本語に設定中..." -ForegroundColor Green
@@ -218,7 +322,7 @@ Write-Host "  日本語化設定(locale.json) の作成完了" -ForegroundColor Green
 Write-Host ""
 
 # ============================================================
-# 6. 設定ファイルのコピー
+# 7. 設定ファイルのコピー
 # ============================================================
 
 Write-Host "設定ファイルをコピー中..." -ForegroundColor Green
@@ -274,6 +378,9 @@ Write-Host ""
 $itemsToDelete = @(
     ".\config",           # configフォルダ
     ".\get-pip.py",       # get-pip.pyファイル（もし残っている場合）
+    ".\python-full",	  # フル規格のpythonの展開先フォルダ
+    ".\python-full.zip",  # フル規格のpythonのzipファイル
+    ".\tk_error.log",       # tkl/tkのインストールログ
     "$PSCommandPath",     # setup.ps1自身
     ".\setup.bat"         # setup.bat
 )
