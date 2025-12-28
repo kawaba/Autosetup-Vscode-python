@@ -241,7 +241,7 @@ Write-Host "  [17/18] kbinput（キーボード入力） をインストール中..."
 
 # tkxlibのインストール
 Write-Host "  [18/18] tkxlib （教材ツール）をインストール中..."
-& ".\python\python.exe" -m pip install https://k-webs.jp/lib/python/tkxlib-1.1.0-py3-none-any.whl
+& ".\python\python.exe" -m pip install https://k-webs.jp/lib/python/tkxlib-1.1.1-py3-none-any.whl
 
 Write-Host "  Pythonライブラリのインストール完了" -ForegroundColor Green
 Write-Host ""
