@@ -1,60 +1,60 @@
 # ============================================================
-# Portable Python + VS Code ƒZƒbƒgƒAƒbƒvƒXƒNƒŠƒvƒg
+# Portable Python + VS Code ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 # ============================================================
 
 $ErrorActionPreference = "Stop"
-$ProgressPreference = 'SilentlyContinue'  # ‚‘¬‰»
+$ProgressPreference = 'SilentlyContinue'  # é«˜é€ŸåŒ–
 
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host " Portable Python + VS Code ŠÂ‹«ƒZƒbƒgƒAƒbƒvŠJn" -ForegroundColor Cyan
+Write-Host " Portable Python + VS Code ç’°å¢ƒã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—é–‹å§‹" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 
 # ============================================================
-# 1. ƒ|[ƒ^ƒuƒ‹Python‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJ
+# 1. ãƒãƒ¼ã‚¿ãƒ–ãƒ«Pythonã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹
 # ============================================================
 
-Write-Host "[1/5] ƒ|[ƒ^ƒuƒ‹Python‚ğƒ_ƒEƒ“ƒ[ƒh’†..." -ForegroundColor Green
+Write-Host "[1/5] ãƒãƒ¼ã‚¿ãƒ–ãƒ«Pythonã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­..." -ForegroundColor Green
 
-# Python 3.12.9 Embeddable”Åi64bitj
+# Python 3.12.9 Embeddableç‰ˆï¼ˆ64bitï¼‰
 $pythonUrl = "https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip"
 $pythonZip = "python.zip"
 $pythonDir = ".\python"
 
 if (Test-Path $pythonDir) {
-    Write-Host "  › Python‚ÍŠù‚É‘¶İ‚µ‚Ü‚·BƒXƒLƒbƒv‚µ‚Ü‚·B" -ForegroundColor Yellow
+    Write-Host "  â—‹ Pythonã¯æ—¢ã«å­˜åœ¨ã—ã¾ã™ã€‚ã‚¹ã‚­ãƒƒãƒ—ã—ã¾ã™ã€‚" -ForegroundColor Yellow
 } else {
-    Write-Host "  ƒ_ƒEƒ“ƒ[ƒh’†: $pythonUrl"
+    Write-Host "  ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­: $pythonUrl"
     Invoke-WebRequest -Uri $pythonUrl -OutFile $pythonZip
     
-    Write-Host "  “WŠJ’†..."
+    Write-Host "  å±•é–‹ä¸­..."
     Expand-Archive -Path $pythonZip -DestinationPath $pythonDir -Force
     Remove-Item $pythonZip
     
-    Write-Host "  Python‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJŠ®—¹" -ForegroundColor Green
+    Write-Host "  Pythonã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹å®Œäº†" -ForegroundColor Green
 }
 
 # ============================================================
-# python312._pth ‚ÌC³ipip—LŒø‰»‚Ì‚½‚ßj
+# python312._pth ã®ä¿®æ­£ï¼ˆpipæœ‰åŠ¹åŒ–ã®ãŸã‚ï¼‰
 # ============================================================
 
-Write-Host "  python312._pth ‚ğC³’†..."
+Write-Host "  python312._pth ã‚’ä¿®æ­£ä¸­..."
 $pthFile = Join-Path $pythonDir "python312._pth"
 
 if (Test-Path $pthFile) {
     $content = Get-Content $pthFile
     $newContent = $content -replace '^#import site', 'import site'
     $newContent | Set-Content $pthFile -Encoding ASCII
-    Write-Host "  python312._pth ‚ÌC³Š®—¹" -ForegroundColor Green
+    Write-Host "  python312._pth ã®ä¿®æ­£å®Œäº†" -ForegroundColor Green
 }
 
 Write-Host ""
 
 # ============================================================
-# 1.5 Tcl/Tk ƒZƒbƒgƒAƒbƒvitkinter—LŒø‰»EŠmÀ”Åj
+# 1.5 Tcl/Tk ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ï¼ˆtkinteræœ‰åŠ¹åŒ–ãƒ»ç¢ºå®Ÿç‰ˆï¼‰
 # ============================================================
 
-Write-Host "[1.5/5] Tcl/Tk ‚ğƒZƒbƒgƒAƒbƒv’†..." -ForegroundColor Green
+Write-Host "[1.5/5] Tcl/Tk ã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ä¸­..." -ForegroundColor Green
 
 $tkLog = Join-Path $PSScriptRoot "tk_error.log"
 
@@ -69,11 +69,11 @@ try {
     $fullDir = ".\python-full"
 
     if (!(Test-Path $fullDir)) {
-        Write-Host "  ƒtƒ‹”ÅPython(ZIP)‚ğƒ_ƒEƒ“ƒ[ƒh’†..." -ForegroundColor Gray
+        Write-Host "  ãƒ•ãƒ«ç‰ˆPython(ZIP)ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­..." -ForegroundColor Gray
         $url = "https://www.python.org/ftp/python/3.12.9/python-3.12.9-amd64.zip"
         Invoke-WebRequest -Uri $url -OutFile $fullZip
 
-        Write-Host "  “WŠJ’†..." -ForegroundColor Gray
+        Write-Host "  å±•é–‹ä¸­..." -ForegroundColor Gray
         Expand-Archive -Path $fullZip -DestinationPath $fullDir -Force
     }
 
@@ -82,60 +82,61 @@ try {
     $dstDlls = Join-Path $pythonDir "DLLs"
 
     if (!(Test-Path $srcTcl)) {
-        throw "tcl ƒfƒBƒŒƒNƒgƒŠ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: $srcTcl"
+        throw "tcl ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: $srcTcl"
     }
 
     Copy-Item $srcTcl $pythonDir -Recurse -Force
-    Write-TkLog "tcl ƒRƒs[¬Œ÷"
+    Write-TkLog "tcl ã‚³ãƒ”ãƒ¼æˆåŠŸ"
 
     Copy-Item "$srcDlls\_tkinter.pyd" $dstDlls -Force
-    Write-TkLog "_tkinter.pyd ƒRƒs[¬Œ÷"
+    Write-TkLog "_tkinter.pyd ã‚³ãƒ”ãƒ¼æˆåŠŸ"
 
     Copy-Item "$srcDlls\tcl86t.dll" $pythonDir -Force
     Copy-Item "$srcDlls\tk86t.dll"  $pythonDir -Force
-    Write-TkLog "tcl/tk DLL ƒRƒs[¬Œ÷"
+    Write-TkLog "tcl/tk DLL ã‚³ãƒ”ãƒ¼æˆåŠŸ"
 
-    Write-Host "  Tcl/Tk ƒZƒbƒgƒAƒbƒvŠ®—¹" -ForegroundColor Green
+    Write-Host "  Tcl/Tk ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å®Œäº†" -ForegroundColor Green
 }
 catch {
-    Write-Host "  Tcl/Tk ƒZƒbƒgƒAƒbƒv¸”s" -ForegroundColor Red
-    Write-Host "  Ú×‚Í tk_error.log ‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢" -ForegroundColor Yellow
-    Write-TkLog "ƒGƒ‰[: $($_.Exception.Message)"
+    Write-Host "  Tcl/Tk ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å¤±æ•—" -ForegroundColor Red
+    Write-Host "  è©³ç´°ã¯ tk_error.log ã‚’ç¢ºèªã—ã¦ãã ã•ã„" -ForegroundColor Yellow
+    Write-TkLog "ã‚¨ãƒ©ãƒ¼: $($_.Exception.Message)"
 }
 
 Write-Host ""
 
 
 # ============================================================
-# 2. pipƒRƒ}ƒ“ƒh‚ÌƒCƒ“ƒXƒg[ƒ‹
+# 2. pipã‚³ãƒãƒ³ãƒ‰ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # ============================================================
 
-Write-Host "[2/5] pip‚ğƒCƒ“ƒXƒg[ƒ‹’†..." -ForegroundColor Green
+Write-Host "[2/5] pipã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..." -ForegroundColor Green
 
 $getPipUrl = "https://bootstrap.pypa.io/get-pip.py"
 $getPipFile = "get-pip.py"
 
-Write-Host "  get-pip.py ‚ğƒ_ƒEƒ“ƒ[ƒh’†..."
+Write-Host "  get-pip.py ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­..."
 Invoke-WebRequest -Uri $getPipUrl -OutFile $getPipFile
 
-Write-Host "  pip ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+Write-Host "  pip ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" $getPipFile
 
-Write-Host "  pip‚Ìƒo[ƒWƒ‡ƒ“Šm”F:"
+Write-Host "  pipã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç¢ºèª:"
 & ".\python\python.exe" -m pip --version
 
-Write-Host "  pip‚ÌƒCƒ“ƒXƒg[ƒ‹Š®—¹" -ForegroundColor Green
+Write-Host "  pipã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å®Œäº†" -ForegroundColor Green
 Write-Host ""
 
 # ============================================================
-# 3. Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒXƒg[ƒ‹
+# 3. Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # ============================================================
 
-Write-Host "[3/5] Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..." -ForegroundColor Green
+Write-Host "[3/5] Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..." -ForegroundColor Green
 $env:PATH = "$PWD\python;$PWD\python\Scripts;$env:PATH"
 
 & ".\python\python.exe" -m pip install --upgrade pip
 & ".\python\python.exe" -m pip install wheel
+& ".\python\python.exe" -m pip install build
 & ".\python\python.exe" -m pip install black pylint flake8 autopep8 isort mypy
 & ".\python\python.exe" -m pip install requests python-dotenv tqdm colorama
 & ".\python\python.exe" -m pip install --only-binary :all: numpy pandas matplotlib scipy seaborn
@@ -152,129 +153,129 @@ $env:PATH = "$PWD\python;$PWD\python\Scripts;$env:PATH"
 Write-Host ""
 
 # ============================================================
-# 4. Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒXƒg[ƒ‹
+# 4. Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # ============================================================
 
-Write-Host "[3/5] Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..." -ForegroundColor Green
-Write-Host "  i‚±‚Ìˆ—‚É‚Í5~10•ª‚©‚©‚éê‡‚ª‚ ‚è‚Ü‚·j" -ForegroundColor Yellow
+Write-Host "[3/5] Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..." -ForegroundColor Green
+Write-Host "  ï¼ˆã“ã®å‡¦ç†ã«ã¯5~10åˆ†ã‹ã‹ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ï¼‰" -ForegroundColor Yellow
 Write-Host ""
 
-# PATH‚Ìİ’è
+# PATHã®è¨­å®š
 $env:PATH = "$PWD\python;$PWD\python\Scripts;$env:PATH"
 
-# pip‚ÌƒAƒbƒvƒOƒŒ[ƒh
-Write-Host "  pip ‚ğƒAƒbƒvƒOƒŒ[ƒh’†..."
+# pipã®ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰
+Write-Host "  pip ã‚’ã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ä¸­..."
 & ".\python\python.exe" -m pip install --upgrade pip
 
-# wheel‚ÌƒCƒ“ƒXƒg[ƒ‹
-Write-Host "  wheel ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# wheelã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+Write-Host "  wheel ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install wheel
 
-# ƒR[ƒh®Œ`EÃ“I‰ğÍƒc[ƒ‹
-Write-Host "  [1/17] ƒR[ƒh®Œ`E‰ğÍƒc[ƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ã‚³ãƒ¼ãƒ‰æ•´å½¢ãƒ»é™çš„è§£æãƒ„ãƒ¼ãƒ«
+Write-Host "  [1/17] ã‚³ãƒ¼ãƒ‰æ•´å½¢ãƒ»è§£æãƒ„ãƒ¼ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install black pylint flake8 autopep8 isort mypy
 
-# ƒ†[ƒeƒBƒŠƒeƒBŒn
-Write-Host "  [2/17] ƒ†[ƒeƒBƒŠƒeƒB‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ç³»
+Write-Host "  [2/17] ãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install requests python-dotenv tqdm colorama
 
-# ”’lE“ŒvE‰Â‹‰»
-Write-Host "  [3/17] ”’lŒvZE‰Â‹‰»ƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# æ•°å€¤ãƒ»çµ±è¨ˆãƒ»å¯è¦–åŒ–
+Write-Host "  [3/17] æ•°å€¤è¨ˆç®—ãƒ»å¯è¦–åŒ–ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install --only-binary :all: numpy pandas matplotlib scipy seaborn
 
-# WebŠJ”­
-Write-Host "  [4/17] WebŠJ”­ƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# Webé–‹ç™º
+Write-Host "  [4/17] Webé–‹ç™ºãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install flask fastapi uvicorn beautifulsoup4 lxml
 
-# ExcelE‰æ‘œEƒeƒXƒg
-Write-Host "  [5/17] ExcelE‰æ‘œˆ—EƒeƒXƒgƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# Excelãƒ»ç”»åƒãƒ»ãƒ†ã‚¹ãƒˆ
+Write-Host "  [5/17] Excelãƒ»ç”»åƒå‡¦ç†ãƒ»ãƒ†ã‚¹ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install openpyxl pillow pyyaml pytest faker
 
 # Jupyter Notebook
-Write-Host "  [6/17] Jupyter Notebook‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+Write-Host "  [6/17] Jupyter Notebookã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install notebook jupyterlab ipykernel ipywidgets
 
 # Jupyter LSP
-Write-Host "  [7/17] Jupyter LSP‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+Write-Host "  [7/17] Jupyter LSPã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install jupyterlab-lsp python-lsp-server
 
-# ƒOƒ‰ƒtEExcelo—ÍŠg’£
-Write-Host "  [8/17] ƒOƒ‰ƒtEExcelo—Íƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ã‚°ãƒ©ãƒ•ãƒ»Excelå‡ºåŠ›æ‹¡å¼µ
+Write-Host "  [8/17] ã‚°ãƒ©ãƒ•ãƒ»Excelå‡ºåŠ›ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install plotly xlsxwriter
 
-# streamlit ŠÖŒW
-Write-Host "  [9/17] ƒOƒ‰ƒtEstreamlitŠÖ˜Aƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# streamlit é–¢ä¿‚
+Write-Host "  [9/17] ã‚°ãƒ©ãƒ•ãƒ»streamlité–¢é€£ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install streamlit requests
 
-# ‚»‚Ì‘¼isettings.json‚ÅQÆ‚³‚ê‚Ä‚¢‚é‚à‚Ìj
-Write-Host "  [10/17] ‚»‚Ì‘¼•K—v‚Èƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ãã®ä»–ï¼ˆsettings.jsonã§å‚ç…§ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ï¼‰
+Write-Host "  [10/17] ãã®ä»–å¿…è¦ãªãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install debugpy
 
-# ƒQ[ƒ€ŠJ”­
-Write-Host "  [11/17] ƒQ[ƒ€ŠJ”­ƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ã‚²ãƒ¼ãƒ é–‹ç™º
+Write-Host "  [11/17] ã‚²ãƒ¼ãƒ é–‹ç™ºãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install pygame arcade pyglet
 
-# ‹@ŠBŠwKEƒf[ƒ^ƒTƒCƒGƒ“ƒX
-Write-Host "  [12/17] ‹@ŠBŠwKƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# æ©Ÿæ¢°å­¦ç¿’ãƒ»ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚¨ãƒ³ã‚¹
+Write-Host "  [12/17] æ©Ÿæ¢°å­¦ç¿’ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install scikit-learn statsmodels
 
-# ƒf[ƒ^ƒx[ƒXEORM
-Write-Host "  [13/17] ƒf[ƒ^ƒx[ƒXƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ»ORM
+Write-Host "  [13/17] ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install sqlalchemy psycopg2-binary
 
-# APIŠJ”­‹­‰»
-Write-Host "  [14/17] APIŠJ”­‹­‰»ƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# APIé–‹ç™ºå¼·åŒ–
+Write-Host "  [14/17] APIé–‹ç™ºå¼·åŒ–ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install pydantic httpx
 
-# “ú–{Œêˆ—
-Write-Host "  [15/17] “ú–{Œêˆ—ƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# æ—¥æœ¬èªå‡¦ç†
+Write-Host "  [15/17] æ—¥æœ¬èªå‡¦ç†ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install janome
 
-# ƒ^[ƒ~ƒiƒ‹o—Í
-Write-Host "  [16/17] ƒ^[ƒ~ƒiƒ‹o—Íƒ‰ƒCƒuƒ‰ƒŠ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# ã‚¿ãƒ¼ãƒŸãƒŠãƒ«å‡ºåŠ›
+Write-Host "  [16/17] ã‚¿ãƒ¼ãƒŸãƒŠãƒ«å‡ºåŠ›ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install rich
 
-# tkinput‚ÌƒCƒ“ƒXƒg[ƒ‹
-Write-Host "  [17/17] kbinput ‚ğƒCƒ“ƒXƒg[ƒ‹’†..."
+# tkinputã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+Write-Host "  [17/17] kbinput ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..."
 & ".\python\python.exe" -m pip install https://k-webs.jp/lib/python/kbinput-1.0.0-py3-none-any.whl
 
-Write-Host "  Pythonƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒCƒ“ƒXƒg[ƒ‹Š®—¹" -ForegroundColor Green
+Write-Host "  Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å®Œäº†" -ForegroundColor Green
 Write-Host ""
 
 # ============================================================
-# 5. VS Code‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJ
+# 5. VS Codeã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹
 # ============================================================
 
-Write-Host "[4/5] VS Code Portable‚ğƒ_ƒEƒ“ƒ[ƒh’†..." -ForegroundColor Green
+Write-Host "[4/5] VS Code Portableã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­..." -ForegroundColor Green
 $vscodeUrl = "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-archive"
 			 
 $vscodeZip = "vscode.zip"
 $vscodeDir = ".\vscode"
 
 if (Test-Path $vscodeDir) {
-    Write-Host "  › VS Code‚ÍŠù‚É‘¶İ‚µ‚Ü‚·BƒXƒLƒbƒv‚µ‚Ü‚·B" -ForegroundColor Yellow
+    Write-Host "  â—‹ VS Codeã¯æ—¢ã«å­˜åœ¨ã—ã¾ã™ã€‚ã‚¹ã‚­ãƒƒãƒ—ã—ã¾ã™ã€‚" -ForegroundColor Yellow
 } else {
-    Write-Host "  ƒ_ƒEƒ“ƒ[ƒh’†iƒTƒCƒY‚ª‘å‚«‚¢‚½‚ßŠÔ‚ª‚©‚©‚è‚Ü‚·j..."
+    Write-Host "  ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­ï¼ˆã‚µã‚¤ã‚ºãŒå¤§ãã„ãŸã‚æ™‚é–“ãŒã‹ã‹ã‚Šã¾ã™ï¼‰..."
     Invoke-WebRequest -Uri $vscodeUrl -OutFile $vscodeZip
     
-    Write-Host "  “WŠJ’†..."
+    Write-Host "  å±•é–‹ä¸­..."
     Expand-Archive -Path $vscodeZip -DestinationPath $vscodeDir -Force
     Remove-Item $vscodeZip
     
-    # ƒ|[ƒ^ƒuƒ‹ƒ‚[ƒh—LŒø‰»
-    Write-Host "  ƒ|[ƒ^ƒuƒ‹ƒ‚[ƒh‚ğ—LŒø‰»’†..."
+    # ãƒãƒ¼ã‚¿ãƒ–ãƒ«ãƒ¢ãƒ¼ãƒ‰æœ‰åŠ¹åŒ–
+    Write-Host "  ãƒãƒ¼ã‚¿ãƒ–ãƒ«ãƒ¢ãƒ¼ãƒ‰ã‚’æœ‰åŠ¹åŒ–ä¸­..."
     New-Item -Path "$vscodeDir\data" -ItemType Directory -Force | Out-Null
     
-    Write-Host "  VS Code‚Ìƒ_ƒEƒ“ƒ[ƒhE“WŠJŠ®—¹" -ForegroundColor Green
+    Write-Host "  VS Codeã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒ»å±•é–‹å®Œäº†" -ForegroundColor Green
 }
 
 Write-Host ""
 
 # ============================================================
-# 6. VS CodeŠg’£‹@”\‚ÌƒCƒ“ƒXƒg[ƒ‹
+# 6. VS Codeæ‹¡å¼µæ©Ÿèƒ½ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # ============================================================
 
-Write-Host "[5/5] VS CodeŠg’£‹@”\‚ğƒCƒ“ƒXƒg[ƒ‹’†..." -ForegroundColor Green
+Write-Host "[5/5] VS Codeæ‹¡å¼µæ©Ÿèƒ½ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­..." -ForegroundColor Green
 
 $extFile = ".\config\cleanExtentions.txt"
 
@@ -285,103 +286,103 @@ if (Test-Path $extFile) {
     $total = $extensions.Count
     
     foreach ($ext in $extensions) {
-        Write-Host "  [$count/$total] ƒCƒ“ƒXƒg[ƒ‹’†: $ext"
+        Write-Host "  [$count/$total] ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ä¸­: $ext"
         & ".\vscode\bin\code.cmd" --install-extension $ext --force
         $count++
     }
     
-    Write-Host "  Šg’£‹@”\‚ÌƒCƒ“ƒXƒg[ƒ‹Š®—¹" -ForegroundColor Green
+    Write-Host "  æ‹¡å¼µæ©Ÿèƒ½ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«å®Œäº†" -ForegroundColor Green
 } else {
-    Write-Host "  Œx: cleanExtentions.txt ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ" -ForegroundColor Yellow
+    Write-Host "  è­¦å‘Š: cleanExtentions.txt ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“" -ForegroundColor Yellow
 }
 
 Write-Host ""
 
 # ============================================================
-# 6.5 VS Code “ú–{Œê‰»İ’è‚ğ’Ç‰Á
+# 6.5 VS Code æ—¥æœ¬èªåŒ–è¨­å®šã‚’è¿½åŠ 
 # ============================================================
 
-Write-Host "VS Code ‚Ì•\¦Œ¾Œê‚ğ“ú–{Œê‚Éİ’è’†..." -ForegroundColor Green
+Write-Host "VS Code ã®è¡¨ç¤ºè¨€èªã‚’æ—¥æœ¬èªã«è¨­å®šä¸­..." -ForegroundColor Green
 
 $localeDir = ".\vscode\data\user-data\User"
 $localeFile = Join-Path $localeDir "locale.json"
 
-# ƒfƒBƒŒƒNƒgƒŠ‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬
+# ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ä½œæˆ
 if (-not (Test-Path $localeDir)) {
     New-Item -Path $localeDir -ItemType Directory -Force | Out-Null
 }
 
-# locale.json ‚É "locale": "ja" ‚ğ‘‚«‚Ş
+# locale.json ã« "locale": "ja" ã‚’æ›¸ãè¾¼ã‚€
 @'
 {
     "locale": "ja"
 }
 '@ | Out-File -FilePath $localeFile -Encoding utf8 -Force
 
-Write-Host "  “ú–{Œê‰»İ’è(locale.json) ‚Ìì¬Š®—¹" -ForegroundColor Green
+Write-Host "  æ—¥æœ¬èªåŒ–è¨­å®š(locale.json) ã®ä½œæˆå®Œäº†" -ForegroundColor Green
 Write-Host ""
 
 # ============================================================
-# 7. İ’èƒtƒ@ƒCƒ‹‚ÌƒRƒs[
+# 7. è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ”ãƒ¼
 # ============================================================
 
-Write-Host "İ’èƒtƒ@ƒCƒ‹‚ğƒRƒs[’†..." -ForegroundColor Green
+Write-Host "è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚³ãƒ”ãƒ¼ä¸­..." -ForegroundColor Green
 
 $settingsSource = ".\config\settings.json"
 $settingsDir = ".\vscode\data\user-data\User"
 $settingsDest = Join-Path $settingsDir "settings.json"
 
 if (Test-Path $settingsSource) {
-    # ƒfƒBƒŒƒNƒgƒŠ‚ª‘¶İ‚µ‚È‚¢ê‡‚Íì¬
+    # ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒå­˜åœ¨ã—ãªã„å ´åˆã¯ä½œæˆ
     if (-not (Test-Path $settingsDir)) {
         New-Item -Path $settingsDir -ItemType Directory -Force | Out-Null
     }
     
     Copy-Item $settingsSource $settingsDest -Force
-    Write-Host "  settings.json ‚ÌƒRƒs[Š®—¹" -ForegroundColor Green
+    Write-Host "  settings.json ã®ã‚³ãƒ”ãƒ¼å®Œäº†" -ForegroundColor Green
     Write-Host ""
-    Write-Host "  ’ˆÓ: PythonƒpƒX‚ÍŠÂ‹«•Ï”‚Åİ’è‚³‚ê‚Ü‚·" -ForegroundColor Cyan
-    Write-Host "  •K‚¸ launch-vscode.bat ‚©‚ç‹N“®‚µ‚Ä‚­‚¾‚³‚¢" -ForegroundColor Cyan
+    Write-Host "  æ³¨æ„: Pythonãƒ‘ã‚¹ã¯ç’°å¢ƒå¤‰æ•°ã§è¨­å®šã•ã‚Œã¾ã™" -ForegroundColor Cyan
+    Write-Host "  å¿…ãš launch-vscode.bat ã‹ã‚‰èµ·å‹•ã—ã¦ãã ã•ã„" -ForegroundColor Cyan
 } else {
-    Write-Host "  Œx: settings.json ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ" -ForegroundColor Yellow
+    Write-Host "  è­¦å‘Š: settings.json ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“" -ForegroundColor Yellow
 }
 
 Write-Host ""
 
 # ============================================================
-# Š®—¹ƒƒbƒZ[ƒW
+# å®Œäº†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
 # ============================================================
 
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host " ƒZƒbƒgƒAƒbƒv‚ªŠ®—¹‚µ‚Ü‚µ‚½I" -ForegroundColor Cyan
+Write-Host " ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãŒå®Œäº†ã—ã¾ã—ãŸï¼" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Ÿ‚Ìè‡‚Å‹N“®‚µ‚Ä‚­‚¾‚³‚¢:" -ForegroundColor White
-Write-Host "  1. launch-vscode.bat ‚ğƒ_ƒuƒ‹ƒNƒŠƒbƒN" -ForegroundColor Yellow
-Write-Host "  2. VS Code‚ª‹N“®‚µ‚Ü‚·" -ForegroundColor Yellow
+Write-Host "æ¬¡ã®æ‰‹é †ã§èµ·å‹•ã—ã¦ãã ã•ã„:" -ForegroundColor White
+Write-Host "  1. launch-vscode.bat ã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯" -ForegroundColor Yellow
+Write-Host "  2. VS CodeãŒèµ·å‹•ã—ã¾ã™" -ForegroundColor Yellow
 Write-Host ""
-Write-Host "ƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚½ŠÂ‹«:" -ForegroundColor White
-Write-Host "  EPython 3.12.9 (Portable)" -ForegroundColor Gray
-Write-Host "  EVS Code (Portable)" -ForegroundColor Gray
-Write-Host "  EŠg’£‹@”\ ($($extensions.Count)ŒÂ)" -ForegroundColor Gray
-Write-Host "  EPythonƒ‰ƒCƒuƒ‰ƒŠinumpy, pandas, jupyter“™j" -ForegroundColor Gray
+Write-Host "ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚ŒãŸç’°å¢ƒ:" -ForegroundColor White
+Write-Host "  ãƒ»Python 3.12.9 (Portable)" -ForegroundColor Gray
+Write-Host "  ãƒ»VS Code (Portable)" -ForegroundColor Gray
+Write-Host "  ãƒ»æ‹¡å¼µæ©Ÿèƒ½ ($($extensions.Count)å€‹)" -ForegroundColor Gray
+Write-Host "  ãƒ»Pythonãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆnumpy, pandas, jupyterç­‰ï¼‰" -ForegroundColor Gray
 Write-Host ""
 
 # ============================================================
-# ƒZƒbƒgƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì©“®íœ
+# ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®è‡ªå‹•å‰Šé™¤
 # ============================================================
 
-Write-Host "ƒZƒbƒgƒAƒbƒvƒtƒ@ƒCƒ‹‚ğíœ’†..." -ForegroundColor Yellow
+Write-Host "ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ä¸­..." -ForegroundColor Yellow
 Write-Host ""
 
-# íœ‘ÎÛ‚Ìƒtƒ@ƒCƒ‹‚ÆƒtƒHƒ‹ƒ_
+# å‰Šé™¤å¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¨ãƒ•ã‚©ãƒ«ãƒ€
 $itemsToDelete = @(
-    ".\config",           # configƒtƒHƒ‹ƒ_
-    ".\get-pip.py",       # get-pip.pyƒtƒ@ƒCƒ‹i‚à‚µc‚Á‚Ä‚¢‚éê‡j
-    ".\python-full",	  # ƒtƒ‹‹KŠi‚Ìpython‚Ì“WŠJæƒtƒHƒ‹ƒ_
-    ".\python-full.zip",  # ƒtƒ‹‹KŠi‚Ìpython‚Ìzipƒtƒ@ƒCƒ‹
-    ".\tk_error.log",       # tkl/tk‚ÌƒCƒ“ƒXƒg[ƒ‹ƒƒO
-    "$PSCommandPath",     # setup.ps1©g
+    ".\config",           # configãƒ•ã‚©ãƒ«ãƒ€
+    ".\get-pip.py",       # get-pip.pyãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆã‚‚ã—æ®‹ã£ã¦ã„ã‚‹å ´åˆï¼‰
+    ".\python-full",	  # ãƒ•ãƒ«è¦æ ¼ã®pythonã®å±•é–‹å…ˆãƒ•ã‚©ãƒ«ãƒ€
+    ".\python-full.zip",  # ãƒ•ãƒ«è¦æ ¼ã®pythonã®zipãƒ•ã‚¡ã‚¤ãƒ«
+    ".\tk_error.log",       # tkl/tkã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãƒ­ã‚°
+    "$PSCommandPath",     # setup.ps1è‡ªèº«
     ".\setup.bat"         # setup.bat
 )
 
@@ -389,23 +390,24 @@ foreach ($item in $itemsToDelete) {
     if (Test-Path $item) {
         try {
             if (Test-Path $item -PathType Container) {
-                # ƒtƒHƒ‹ƒ_‚Ìê‡
+                # ãƒ•ã‚©ãƒ«ãƒ€ã®å ´åˆ
                 Remove-Item $item -Recurse -Force
-                Write-Host "  íœŠ®—¹: $item (ƒtƒHƒ‹ƒ_)" -ForegroundColor Gray
+                Write-Host "  å‰Šé™¤å®Œäº†: $item (ãƒ•ã‚©ãƒ«ãƒ€)" -ForegroundColor Gray
             } else {
-                # ƒtƒ@ƒCƒ‹‚Ìê‡
+                # ãƒ•ã‚¡ã‚¤ãƒ«ã®å ´åˆ
                 Remove-Item $item -Force
-                Write-Host "  íœŠ®—¹: $item" -ForegroundColor Gray
+                Write-Host "  å‰Šé™¤å®Œäº†: $item" -ForegroundColor Gray
             }
         } catch {
-            Write-Host "  Œx: $item ‚Ìíœ‚É¸”s‚µ‚Ü‚µ‚½" -ForegroundColor Yellow
+            Write-Host "  è­¦å‘Š: $item ã®å‰Šé™¤ã«å¤±æ•—ã—ã¾ã—ãŸ" -ForegroundColor Yellow
         }
     }
 }
 
 Write-Host ""
-Write-Host "ƒZƒbƒgƒAƒbƒvƒtƒ@ƒCƒ‹‚Ìíœ‚ªŠ®—¹‚µ‚Ü‚µ‚½B" -ForegroundColor Green
+Write-Host "ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤ãŒå®Œäº†ã—ã¾ã—ãŸã€‚" -ForegroundColor Green
 Write-Host ""
 Write-Host "Press any key to exit..."
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
 
