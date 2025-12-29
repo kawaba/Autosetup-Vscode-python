@@ -185,7 +185,7 @@ Write-Host "  [3/18] 数値計算・可視化ライブラリをインストール中..."
 
 # Web開発
 Write-Host "  [4/18] Web開発ライブラリをインストール中..."
-& ".\python\python.exe" -m pip install flask fastapi uvicorn beautifulsoup4 lxml
+& ".\python\python.exe" -m pip install flask requests fastapi uvicorn beautifulsoup4 lxml
 
 # Excel・画像・テスト
 Write-Host "  [5/18] Excel・画像処理・テストライブラリをインストール中..."
